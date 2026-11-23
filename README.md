@@ -33,10 +33,9 @@ http://localhost:8080
 docker compose down
 
 ## Логи
-Просмотр логов Nextcloud:
+- Просмотр логов Nextcloud:
 docker compose logs -f app
-
-## Просмотр логов PostgreSQL
+- Просмотр логов PostgreSQL
 docker compose logs -f db
 
 ## Выход из просмотра логов: Ctrl + C.
