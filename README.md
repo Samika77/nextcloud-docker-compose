@@ -8,6 +8,8 @@
 - Docker volumes для сохранения данных
 - Healthcheck для PostgreSQL
 - Зависимость Nextcloud от готовности PostgreSQL
+- Nginx как reverse proxy
+- Скрипты резервного копирования PostgreSQL и данных Nextcloud
 
 ## Требования
 - Docker
@@ -38,10 +40,23 @@ docker compose logs -f app
 - Просмотр логов PostgreSQL
 docker compose logs -f db
 
-## Выход из просмотра логов: Ctrl + C.
+## Выход из просмотра логов 
+Ctrl + C.
 
 ## Сохранение данных
 После остановки и повторного запуска контейнеров данные Nextcloud и базы данных сохраняются благодаря Docker volumes.
+
+## Reverse proxy
+Nginx работает как reverse proxy. Внешний доступ к Nextcloud осуществляется через порт `8080`; порт Nextcloud напрямую не публикуется.
+
+## Резервное копирование
+Бэкап базы PostgreSQL:
+./scripts/backup-db.sh
+
+Бэкап данных Nextcloud:
+./scripts/backup-nextcloud-data.sh
+
+Файлы бэкапов сохраняются в папку `backups/` и не попадают в Git.
 
 ## Основные команды
 Показать запущенные контейнеры:
